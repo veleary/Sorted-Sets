@@ -1,6 +1,7 @@
 class BasicArraySortedSet
   # Create your internal data structure here. It should be an empty array
   def initialize
+    my_array = []
   end
 
   def name
@@ -9,14 +10,25 @@ class BasicArraySortedSet
 
   # Use the array's native insert method
   def insert(element)
+    if my_array.include?(element)
+      return "Already in array"
+    else 
+      my_array.push(element)
+    end
   end
 
   # Use the array's native include method
   def include?(element)
+    if my_array.include? element
+      return true
+    else 
+      return false
+    end
   end
 
   # Use the array's native sort method
   def get_sorted_array
+    my_array.sort
   end
 end
 
@@ -24,6 +36,7 @@ end
 # the sorted set's methods
 class HashSortedSet
   def initialize
+    my_hash = Hash.new
   end
 
   def name
@@ -32,12 +45,20 @@ class HashSortedSet
 
   # Insert the key value pair (element, true)
   def insert(element)
+    if my_hash.include? element
+     return "Duplicate!"
+    else
+      my_hash[element] = true
+    end
   end
 
   def include?(element)
+    if my_hash.has_key? element
+      return true
   end
 
   def get_sorted_array
+    my_hash.keys.sort
   end
 end
 
@@ -46,6 +67,7 @@ end
 # it when asking for sorted array
 class ArraySortedSet
   def initialize
+    array_sorted = []
   end
 
   def name
@@ -54,13 +76,22 @@ class ArraySortedSet
 
   # Insert the element at the proper index to maintain the sort order
   def insert(element)
+    if array_sorted.include? element
+       return "Duplicate!"
+    else
+      array.sort.push element
+    end
   end
 
   def include?(element)
+    if array_sorted.include? element
+      return true
+    end
   end
 
   # You should be able to simply return the original array
   def get_sorted_array
+    return array_sorted
   end
 end
 
